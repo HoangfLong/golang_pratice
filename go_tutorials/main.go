@@ -1,7 +1,10 @@
 package main
 
 import (
+	"fmt"
+	"go_tutorials/Product"
 	"go_tutorials/Student"
+	"go_tutorials/basic"
 )
 
 // func add(x int, y int) int {
@@ -116,4 +119,56 @@ func main() {
 	Student.AddStudent(&students, 2, "Hoang Long", 22, "Sofware Engineer")
 
 	Student.ListStudent(students)
+
+	//1. Tính tổng
+	var sum int = 0
+
+	for i := 0; i <= 100; i++ {
+		if i%2 == 0 {
+			sum = sum + i
+		}
+	}
+	fmt.Println("Sum:", sum)
+
+	//2. Đảo ngược chuỗi
+	var s = basic.Reverse("hoanglong")
+	fmt.Println("Reverse string", s)
+
+	//Pointer
+	var numb int = 5
+
+	var ptr *int
+
+	ptr = &numb
+
+	*ptr = *ptr + 5
+
+	fmt.Println("total:", *ptr)
+	fmt.Println("variable")
+
+	array := [4]int{1, 2, 3, 4}
+	slices := array[1:3]
+	fmt.Println("s:", slices)
+
+	var products []Product.Product
+
+	Product.AddProduct(&products, 1, "bomb", 5, 2.33)
+
+	fmt.Println(products)
+
+	//Control flow
+	if 20 > 30 {
+		fmt.Println("right:")
+	} else {
+		fmt.Println("false")
+	}
+	//Loop
+	for i := 0; i < 10; i++ {
+		fmt.Println(&i)
+	}
+	//range
+	cars := [3]string{"bomb", "cas", "das"}
+	for idx, val := range cars {
+		fmt.Println(idx, val)
+	}
 }
