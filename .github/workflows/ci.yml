@@ -2,21 +2,19 @@ name: CI pipeline
 
 on:
     push:
-        branches:
+        branches: # Kích hoạt khi có code được đẩy (push) lên nhánh main
             - main
-    pull_request:
+    pull_request: # Kích hoạt khi có Pull Request (PR) được mở/cập nhật tới nhánh main
         branches:
             - main
 jobs:
-    build:
+    build: # Tên của job (công việc) đầu tiên
         runs-on: ubuntu-latest
 
-        steps:
-            - name: Check out code
-              uses: actions/checkout@v2
+        steps: # Các bước (steps) trong job này
+            - name: Checkout code # Bước 1: Lấy mã nguồn từ repo
+              uses: actions/checkout@v2 # Sử dụng action chính thức của GitHub để clone repo
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v2
             - name: Setup Go environment # Bước 2: Thiết lập môi trường Go
               uses: actions/setup-go@v5 # Sử dụng action chính thức của GitHub để cài đặt Go
               with:
