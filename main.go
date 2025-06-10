@@ -171,4 +171,5 @@ func main() {
 	for idx, val := range cars {
 		fmt.Println(idx, val)
 	}
+	fmt.Print("hoho")
 }
