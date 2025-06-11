@@ -1,32 +1,19 @@
-name: CI pipeline
+name : Docker Image CI
 
 on:
-    push:
-        branches: # Kích hoạt khi có code được đẩy (push) lên nhánh main
-            - main
-    pull_request: # Kích hoạt khi có Pull Request (PR) được mở/cập nhật tới nhánh main
-        branches:
-            - main
+  push: 
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  
 jobs:
-    build: # Tên của job (công việc) đầu tiên
-        runs-on: ubuntu-latest
-
-        steps: # Các bước (steps) trong job này
-            - name: Checkout code # Bước 1: Lấy mã nguồn từ repo
-              uses: actions/checkout@v2 # Sử dụng action chính thức của GitHub để clone repo
-
-            - name: Setup Go environment # Bước 2: Thiết lập môi trường Go
-              uses: actions/setup-go@v5 # Sử dụng action chính thức của GitHub để cài đặt Go
-              with:
-                go-version: '1.22' # Chỉ định phiên bản Go bạn muốn dùng (có thể thay đổi)
-
-            - name: Download Go modules # Bước 3: Tải về các module (dependencies) Go
-              run: go mod tidy # Lệnh này sẽ thêm/xóa các module không cần thiết và giữ cho go.mod/go.sum sạch sẽ
-              # Bạn cũng có thể dùng `go mod download` nếu chỉ muốn tải về mà không sửa file
-
-            - name: Run Go tests # Bước 4: Chạy các bài kiểm thử Go
-              run: go test ./... # Lệnh chạy tất cả các bài kiểm thử trong dự án và các gói con
-
-            - name: Build Go application # Bước 5: Biên dịch ứng dụng Go của bạn
-              run: go build -o myapp . # Lệnh build ứng dụng. '-o myapp' đặt tên file thực thi là 'myapp'. '.' là đường dẫn đến gói chính.
-              # Nếu bạn có nhiều entry point hoặc phức tạp hơn, hãy điều chỉnh lệnh build.
+  publish_images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: build image
+        run: docker build ./ -t hoangflong/golang-pratice:latest
+      - name: push image to docker hub
+        run: |
+          docker push hoangflong/golang-pratice:latest
