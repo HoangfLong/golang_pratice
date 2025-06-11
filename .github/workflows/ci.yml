@@ -16,4 +16,5 @@ jobs:
         run: docker build ./ -t hoangflong/golang-pratice:latest
       - name: push image to docker hub
         run: |
+          docker login -u hoangflong -p ${{ secrets.DOCKER_HUB_SECRET }}
           docker push hoangflong/golang-pratice:latest
