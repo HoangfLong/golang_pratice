@@ -1,4 +1,4 @@
-name : Docker Image CI
+name: Docker Image CI
 
 on:
   push: 
@@ -12,8 +12,15 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
+      - name: Fail intentionally for test
+        run: |
+          echo "❌ This is an intentional failure"
+          exit 1
+
       - name: build image
         run: docker build ./ -t hoangflong/golang-pratice:latest
+
       - name: push image to docker hub
         run: |
           docker login -u hoangflong -p ${{ secrets.DOCKER_HUB_SECRET }}
