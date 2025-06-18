@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go_tutorials/array"
+	"go_tutorials/stacks"
 )
 
 func receiveAndSend(c chan int) {
@@ -51,4 +52,17 @@ func main() {
 	fmt.Println(sorted)
 
 	fmt.Println("hoho")
+
+	//Stack
+	myStack := stacks.Stack{}
+	fmt.Println(myStack)
+	myStack.Push(100)
+	myStack.Push(200)
+	myStack.Push(500)
+	fmt.Println(myStack)
+
+	myStack.Pop()
+	fmt.Println(myStack)
+
+	fmt.Println(myStack.Peek())
 }
