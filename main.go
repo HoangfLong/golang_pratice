@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go_tutorials/array"
+	"go_tutorials/queues"
 	"go_tutorials/stacks"
 )
 
@@ -65,4 +66,12 @@ func main() {
 	fmt.Println(myStack)
 
 	fmt.Println(myStack.Peek())
+	//Queues
+	myQueues := queues.Queues{}
+	myQueues.Enqueues(200)
+	myQueues.Enqueues(51200)
+	myQueues.Enqueues(151)
+	fmt.Println("My queues: ", myQueues)
+	myQueues.Dequeues()
+	fmt.Println("My queues: ", myQueues)
 }
