@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go_tutorials/array"
+	"go_tutorials/linkedlist"
 	"go_tutorials/queues"
 	"go_tutorials/stacks"
 )
@@ -49,6 +50,7 @@ func main() {
 
 	//Array Bubble sort
 	arr := []int{7, 12, 9, 4, 11}
+	fmt.Print(&arr[0], &arr[1])
 	sorted := array.BubbleSort(arr)
 	fmt.Println(sorted)
 
@@ -74,4 +76,19 @@ func main() {
 	fmt.Println("My queues: ", myQueues)
 	myQueues.Dequeues()
 	fmt.Println("My queues: ", myQueues)
+
+	//Linkedlist
+	myList := linkedlist.LinkedList{}
+	node1 := &linkedlist.Node{Data: 48}
+	node2 := &linkedlist.Node{Data: 18}
+	node3 := &linkedlist.Node{Data: 58}
+	node4 := &linkedlist.Node{Data: 58}
+	node5 := &linkedlist.Node{Data: 58}
+
+	myList.Prepend(node1)
+	myList.Prepend(node2)
+	myList.Prepend(node3)
+	myList.Prepend(node4)
+	myList.Prepend(node5)
+	myList.PrintListData()
 }
