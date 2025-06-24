@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go_tutorials/array"
+	"go_tutorials/leetcode"
 	"go_tutorials/linkedlist"
 	"go_tutorials/queues"
 	"go_tutorials/stacks"
@@ -91,4 +92,25 @@ func main() {
 	myList.Prepend(node4)
 	myList.Prepend(node5)
 	myList.PrintListData()
+
+	numb := 5
+	array := []int{4, 5, 6, 4, 7, 8, 9, 8, 4}
+	// for index, arr1 := range array {
+	// 	if arr1 == numb {
+	// 		fmt.Println("phan tu cua mang tai: ", index, arr1)
+	// 		break
+	// 	}
+	// }
+	for i := 0; i < len(array); i++ {
+		if array[i] == numb {
+			fmt.Println("Phan tu bang tai array", i)
+		}
+	}
+
+	nums := []int{3, 2, 4}
+	target := 6
+
+	twoSum := leetcode.TwoSum(nums, target)
+	fmt.Println("geeg", twoSum)
+
 }
