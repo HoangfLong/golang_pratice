@@ -50,12 +50,13 @@ func main() {
 	// fmt.Print(*ptr)
 
 	//Array Bubble sort
-	arr := []int{7, 12, 9, 4, 11}
-	fmt.Print(&arr[0], &arr[1])
-	sorted := array.BubbleSort(arr)
-	fmt.Println(sorted)
-
-	fmt.Println("hoho")
+	arr := []int{40, 7, 2, 3, 1}
+	// fmt.Print(&arr[0], &arr[1])
+	// bubbleSort := array.BubbleSort(arr)
+	// fmt.Println(bubbleSort)
+	//Selections Sort
+	selectionSort := array.SelectionSort(arr)
+	fmt.Println("Selection sort: ", selectionSort)
 
 	//Stack
 	myStack := stacks.Stack{}
@@ -112,5 +113,4 @@ func main() {
 
 	twoSum := leetcode.TwoSum(nums, target)
 	fmt.Println("geeg", twoSum)
-
 }
